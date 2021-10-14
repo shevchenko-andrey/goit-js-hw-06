@@ -12,28 +12,25 @@ const images = [
     alt: "Group of Horses Running",
   },
 ];
-// Напиши скрипт для создания галереи изображений по массиву данных. В HTML есть список ul.gallery.
+// Напиши скрипт для создания галереи изображений по массиву данных.
+// В HTML есть список ul.gallery.
 
 // <ul class="gallery"></ul>
-// Используй массив объектов images для создания элементов <img> вложенных в <li>. Для создания разметки используй шаблонные строки и метод insertAdjacentHTML().
+// Используй массив объектов images для создания элементов <img> вложенных в <li>.
+// Для создания разметки используй шаблонные строки и метод insertAdjacentHTML().
 
 // Все элементы галереи должны добавляться в DOM за одну операцию вставки.
 // Добавь минимальное оформление галереи флексбоксами или гридами через CSS классы.
 const galleryRef = document.querySelector(".gallery");
-const createGalleryImg = (images) => {
-    const galeryMap = images.map((img) => {
-    const newGalleryItem = document.createElement("li");
-    newGalleryItem.style.display = "flex";
-    newGalleryItem.style.flexWrap = "wrap";
-    newGalleryItem.style.alignItems = "center";
-    newGalleryItem.style.justifyContent = "center";
-    const newImg = document.createElement("img");
-    newImg.getAttribute("url") = this.img.url;
-    newImg.getAttribute("alt") = this.img.alt;
-    newGalleryItem.append("newImg")
-    
-  });
-   return console.log(galeryMap)
-  return galleryRef.append(...newGalleryItem);
+const addItemsGalleryImg = (images) => {
+  const NewGalleryItems = images.map(createItemGalleryImg).join("");
+  return galleryRef.insertAdjacentHTML("beforeend", NewGalleryItems);
 };
-createGalleryImg(images)
+const createItemGalleryImg = ({ url, alt }) => {
+  return `
+  <li class="list gallery__item">
+  <img src=${url} alt=${alt} class="gallery__images">
+  </li> 
+  `;
+};
+addItemsGalleryImg(images);
