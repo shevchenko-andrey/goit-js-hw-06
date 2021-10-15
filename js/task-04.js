@@ -15,17 +15,18 @@ const btnIncrementRef = document.querySelector(
 );
 
 let counterValue = 0;
-const increaseByOne = () => {
+
+const onIncreaseByOne = () => {
   counterValue -= 1;
-  return (valueRef.textContent = counterValue);
+  valueRef.textContent = counterValue;
 };
-const reduceByOne = () => {
+const onReduceByOne = () => {
   counterValue += 1;
-  return (valueRef.textContent = counterValue);
+  valueRef.textContent = counterValue;
 };
 
-btnDecrementRef.addEventListener("click", increaseByOne);
-btnIncrementRef.addEventListener("click", reduceByOne);
+btnDecrementRef.addEventListener("click", onIncreaseByOne);
+btnIncrementRef.addEventListener("click", onReduceByOne);
 
 // let counterValue = 0;
 // btnDecrementRef.addEventListener("click", (counterValue, valueRef) => {
